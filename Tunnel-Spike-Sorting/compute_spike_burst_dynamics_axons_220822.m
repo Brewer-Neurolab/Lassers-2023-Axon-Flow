@@ -1,4 +1,4 @@
-function [spike_burst_dyn_table]=compute_spike_burst_dynamics_axons_210809(allregion_unit_matched)
+function [spike_burst_dyn_table]=compute_spike_burst_dynamics_axons_220822(allregion_unit_matched)
 
 % This folder contains the contains the mea structs 
 %load(strcat(parent_dir,'\','allregion_unit_matched'))
@@ -53,7 +53,7 @@ for fi=1:length(allregion_unit_matched)
     
     disp(fi+" processed")
 end
-spike_burst_dyn_table = table(fi_vec',regi_vec',chan_name_cell', ff_vec', SR_vec', ISI_cell', IBI_cell', IBSR_cell', spnb_cell', bd_cell',....
-    'VariableNames',{'fi','regi','channel_name', 'if_ff', 'SpikeRate','ISI','IBI','IntraBurstSpikeRate','SpikeperBurst','BurstDuration'});
+spike_burst_dyn_table = table(fi_vec',regi_vec',chan_name_cell', ff_vec', SR_vec', ISI_cell', IBI_cell', IBSR_cell', spnb_cell', bd_cell',burst_bounds_cell',....
+    'VariableNames',{'fi','regi','channel_name', 'if_ff', 'SpikeRate','ISI','IBI','IntraBurstSpikeRate','SpikeperBurst','BurstDuration','BurstBounds'});
 
 end

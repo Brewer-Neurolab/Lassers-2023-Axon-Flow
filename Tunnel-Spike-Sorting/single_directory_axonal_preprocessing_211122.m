@@ -337,8 +337,8 @@ network_stats_211110(stim_areas_table_ff,stim_areas_table_fb)
 
 %% Peak train assembly
 [allregion_unit_matched_stim]=peak_train_assembly_210914(stim_areas_table_ff,stim_areas_table_fb,stim_times_idx);
-[spike_burst_dyn_table_stim]=compute_spike_burst_dynamics_axons_210809(allregion_unit_matched_stim);
+[spike_burst_dyn_table_stim]=compute_spike_burst_dynamics_axons_220822(allregion_unit_matched_stim);
 % save(strcat(parent_dir,'\','allregion_unit_matched_stim'),'allregion_unit_matched_stim','-v7.3')
 % save(strcat(parent_dir,'\','spike_burst_dyn_table_stim'),'spike_burst_dyn_table_stim')
-save(strcat(dated_output_folder_stim,'\','allregion_unit_matched_stim'),'allregion_unit_matched_stim','-v7.3')
-save(strcat(dated_output_folder_stim,'\','spike_burst_dyn_table_stim'),'spike_burst_dyn_table_stim')
+% save(strcat(dated_output_folder_stim,'\','allregion_unit_matched_stim'),'allregion_unit_matched_stim','-v7.3')
+% save(strcat(dated_output_folder_stim,'\','spike_burst_dyn_table_stim'),'spike_burst_dyn_table_stim')
