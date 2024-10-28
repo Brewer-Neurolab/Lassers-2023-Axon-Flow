@@ -10,18 +10,22 @@ recorded_date=date;
 
 parent_dir='D:\Brewer lab data\HFS';
 %nostim
-% mcd_dir='D:\Brewer lab data\HFS\No Stim';
+mcd_dir='D:\Brewer lab data\HFS\No Stim';
 % well_dir='D:\Brewer lab data\HFS\No Stim\Wells_5SD_500maxSD';
+well_dir='D:\Brewer lab data\HFS\No Stim\Wells_3.5SD';
 %theta
-mcd_dir='D:\Brewer lab data\HFS\Theta Stim';
-well_dir='D:\Brewer lab data\HFS\Theta Stim\Wells_5SD_500maxSD';
+% mcd_dir='D:\Brewer lab data\HFS\Theta Stim';
+% well_dir='D:\Brewer lab data\HFS\Theta Stim\Wells_5SD_500maxSD';
 %hfs
-mcd_dir='D:\Brewer lab data\HFS\HFS Stim';
-well_dir='D:\Brewer lab data\HFS\HFS Stim\Wells_5SD_500maxSD';
+% mcd_dir='D:\Brewer lab data\HFS\HFS Stim';
+% well_dir='D:\Brewer lab data\HFS\HFS Stim\Wells_5SD_500maxSD';
 
-%if_cw=[0,0,0,0,1,1,1,1,1];
-if_cw=[0,0,0,0,1,1];
+if_cw=[0,0,0,0,1,1,1,1,1];
+% if_cw=[0,0,0,0,1,1];
 
+if ~isfolder(well_dir)
+    mkdir(well_dir)
+end
 %% get sampling frequency and file length
 
 cd(mcd_dir)
@@ -85,8 +89,8 @@ end
 
 [all_regions_unit_matched]=directory_peak_train_assembly_220103(well_dir,stim_times_idx,if_cw);
 save(strcat(well_dir,'\',"allregion_unit_matched.mat"),"all_regions_unit_matched",'-v7.3')
-[well_spike_dynamics_table]=well_compute_spike_burst_dynamics_axons_220105(all_regions_unit_matched);
+[well_spike_dynamics_table]=well_compute_spike_burst_dynamics_axons_240703(all_regions_unit_matched);
 cd(well_dir)
-%save("well_spike_dynamics_table_nostim",'well_spike_dynamics_table')
+save("well_spike_dynamics_table_nostim",'well_spike_dynamics_table')
 %save("well_spike_dynamics_table_theta",'well_spike_dynamics_table')
-save("well_spike_dynamics_table_hfs",'well_spike_dynamics_table')
+% save("well_spike_dynamics_table_hfs",'well_spike_dynamics_table')

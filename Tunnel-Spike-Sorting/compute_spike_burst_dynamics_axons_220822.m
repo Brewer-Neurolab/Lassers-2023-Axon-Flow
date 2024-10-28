@@ -43,6 +43,11 @@ for fi=1:length(allregion_unit_matched)
                 SR_vec(rowi) = SR_val;
                 fi_vec(rowi) = fi; regi_vec(rowi) = regi;
                 burst_bounds_cell{rowi}=burst_bounds;
+                burst_idx=[];
+                for nbursts=1:length(burst_bounds)
+                    burst_idx=[burst_idx,burst_bounds(nbursts,1):burst_bounds(nbursts,2)];
+                end
+                percSIB{rowi}=length(intersect(find(timestamps{ui}),burst_idx))/sum(timestamps{ui});
                 chan_name_cell = [chan_name_cell, string(chan2comp)+"-"+ui];
                 ff_vec(rowi) = is_ff_vec(ui);
                 rowi=rowi+1;
@@ -53,7 +58,7 @@ for fi=1:length(allregion_unit_matched)
     
     disp(fi+" processed")
 end
-spike_burst_dyn_table = table(fi_vec',regi_vec',chan_name_cell', ff_vec', SR_vec', ISI_cell', IBI_cell', IBSR_cell', spnb_cell', bd_cell',burst_bounds_cell',....
-    'VariableNames',{'fi','regi','channel_name', 'if_ff', 'SpikeRate','ISI','IBI','IntraBurstSpikeRate','SpikeperBurst','BurstDuration','BurstBounds'});
+spike_burst_dyn_table = table(fi_vec',regi_vec',chan_name_cell', ff_vec', SR_vec', ISI_cell', IBI_cell', IBSR_cell', spnb_cell', bd_cell',burst_bounds_cell',percSIB',....
+    'VariableNames',{'fi','regi','channel_name', 'if_ff', 'SpikeRate','ISI','IBI','IntraBurstSpikeRate','SpikeperBurst','BurstDuration','BurstBounds','PercentSpikesInBursts'});
 
 end
